@@ -88,7 +88,6 @@
                 </div>
                 <div>
                     <i class='bx bxs-envelope'></i>
-                    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
                     <strong>Email:</strong>
                     <p>example@mail.ru</p>
                 </div>
@@ -106,47 +105,45 @@
             <table id="data-table" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-
+                        <th>Код</th>
+                        <th>Название</th>
                     </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                <tbody> </tbody>
             </table>
+            <button id="load-more" class="btn btn-primary">Загрузить еще</button>
         </div>
-
-        <button id="load-more">Загрузить еще</button>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
-            const loadMoreButton = document.getElementById('load-more');
-
-            function loadData() {
-                fetch('http://localhost/52/a.php')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Ошибка загрузки данных');
+        $(document).ready(function() {
+            function loadData(limit = 10, append = false) {
+                $.ajax({
+                    url: 'contragents.php',
+                    method: 'GET',
+                    data: { limit: limit },
+                    success: function(response) {
+                        if (append) {
+                            $('#data-table tbody').append(response);
+                        } else {
+                            $('#data-table tbody').html(response);
                         }
-                        return response.json();
-                    })
-                    .then(data => {
-                        data.forEach(item => {
-                            let row = tableBody.insertRow();
-                            let cellId = row.insertCell(0);
-                            let cellName = row.insertCell(1);
-
-                            cellId.textContent = item.id;
-                            cellName.textContent = item.name;
-                        });
-                    })
-                    .catch(error => console.error('Ошибка загрузки данных:', error));
+                    },
+                    error: function(xhr, status, error) {
+                        // Ошибка загрузки данных
+                    }
+                });
             }
 
-            loadMoreButton.addEventListener('click', loadData);
-
-            // Загрузка начальных данных
+            // Инициализируем начальную загрузку данных
             loadData();
+
+            // Добавляем обработчик для кнопки "Загрузить еще"
+            $('#load-more').click(function() {
+                let currentRows = $('#data-table tbody tr').length;
+                loadData(currentRows + 10, true);  // Добавляем данные вместо замены
+            });
         });
     </script>
 </body>
