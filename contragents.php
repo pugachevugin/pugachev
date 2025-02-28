@@ -19,7 +19,7 @@ function getAllContragents($limit)
     global $link;
     openDB();
 
-    $res = mysqli_query($link, "SELECT * FROM a LIMIT $limit");
+    $res = mysqli_query($link, "SELECT id, name FROM a LIMIT $limit");
 
     $contragents = mysqli_fetch_all($res, MYSQLI_ASSOC);
     closeDB();
