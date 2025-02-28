@@ -29,8 +29,8 @@ function getAllContragents($limit)
 if (isset($_GET['limit'])) {
     $limit = $_GET['limit'];
     $contragents = getAllContragents($limit);
-    foreach ($contragents as $contragent) {
-        echo "<tr><td>{$contragent['id']}</td><td>{$contragent['name']}</td></tr>";
+    for ($i = 0; $i < count($contragents); $i++) {
+        echo "<tr><td>{$contragents[$i]['id']}</td><td>{$contragents[$i]['name']}</td></tr>";
     }
 }
 ?>
