@@ -1,0 +1,59 @@
+	 body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 150px;
+            background-image: url("bubbles-cell-cerulean-1.jpg");
+        }
+        .container {
+            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            color: purple;
+        }
+        h1 {
+            font-size: 36px;
+            color: bisque;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 5px 5px;
+            transition: background-color 0.3s ease;
+            margin-left: 750px;
+            margin-bottom: 100px;
+        }
+        .button:hover {
+            background-color: aqua;
+            transform: scale(1.2);
+        }
+        .contact-info div:hover {
+            transform: scale(1.2);
+            transition: transform 0.3s ease;
+        }
+        .info {
+            background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+        }
+        .info p {
+            color: blue;
+            margin-bottom: 5px;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+        }
+        .contact-info div {
+            flex: 3;
+            text-align: center;
+        }
+        .table-container {
+            width: 600px;
+            text-align: left;
+            margin: 0 auto;
+        }
+        #load-more {
+            display: block;
+            margin: 20px auto;
+        }

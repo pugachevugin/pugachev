@@ -1,3 +1,3 @@
-Мой проект Сайт-визитка на HTML + CSS
+Мой проект Сайт-визитка 
 
 Ссылка:https://pugachevugin.github.io/pugachev/
